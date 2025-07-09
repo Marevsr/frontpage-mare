@@ -3,7 +3,6 @@ import { ChevronDown, Users, Eye, DollarSign, Check, ExternalLink, Play } from '
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-
 const Index = () => {
   const [username, setUsername] = useState('');
   const [recentPayments, setRecentPayments] = useState([]);
@@ -15,7 +14,6 @@ const Index = () => {
       const usernames = ['lua****', 'mar****', 'joe****', 'ana****', 'ped****', 'car****', 'bru****', 'fer****', 'gui****', 'leo****'];
       const payments = [];
       const views = [];
-      
       for (let i = 0; i < 10; i++) {
         payments.push({
           id: i + 1,
@@ -23,7 +21,6 @@ const Index = () => {
           status: 'Realizado',
           time: `${Math.floor(Math.random() * 60) + 1} Seconds Ago`
         });
-        
         views.push({
           id: i + 1,
           username: usernames[Math.floor(Math.random() * usernames.length)],
@@ -31,18 +28,14 @@ const Index = () => {
           time: `${Math.floor(Math.random() * 60) + 1} Seconds Ago`
         });
       }
-      
       setRecentPayments(payments);
       setRecentViews(views);
     };
-
     generatePayments();
     const interval = setInterval(generatePayments, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+  return <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       {/* Header */}
       <header className="border-b border-purple-800/30 bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -72,12 +65,7 @@ const Index = () => {
           
           <div className="max-w-md mx-auto bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-purple-800/30">
             <div className="space-y-4">
-              <Input 
-                placeholder="Digite seu username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                className="bg-slate-700/50 border-purple-600/30 text-white placeholder-gray-400"
-              />
+              <Input placeholder="Digite seu username" value={username} onChange={e => setUsername(e.target.value)} className="bg-slate-700/50 border-purple-600/30 text-white placeholder-gray-400" />
               {/* Espaço reservado para HCaptcha */}
               <div className="h-20 bg-slate-700/30 border border-purple-600/30 rounded-md flex items-center justify-center">
                 <span className="text-gray-500 text-sm">HCaptcha será inserido aqui</span>
@@ -99,9 +87,7 @@ const Index = () => {
       {/* Benefits Section */}
       <section id="priority" className="py-20 px-4 bg-slate-800/30">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Our First Priority: Active Users
-          </h2>
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Nossa prioridade: Usuários ativos</h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -139,7 +125,7 @@ const Index = () => {
             <div className="text-center">
               <div className="relative inline-block">
                 <div className="w-80 h-80 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full flex items-center justify-center border border-purple-500/30">
-                  <div className="w-64 h-64 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+                  <div className="max-w-64 right-64 bg-gradient-to-br min-h-64 decoration-pink-600 rounded-full flex items-center justify-center bg-slate-50">
                     <Users className="w-32 h-32 text-white opacity-80" />
                   </div>
                 </div>
@@ -179,8 +165,7 @@ const Index = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {recentPayments.map((payment, index) => (
-                      <tr key={index} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                    {recentPayments.map((payment, index) => <tr key={index} className="border-b border-slate-700/50 hover:bg-slate-700/30">
                         <td className="p-4 text-gray-400">{payment.id}</td>
                         <td className="p-4 font-mono text-purple-400">{payment.username}</td>
                         <td className="p-4">
@@ -189,8 +174,7 @@ const Index = () => {
                           </span>
                         </td>
                         <td className="p-4 text-gray-400 text-sm">{payment.time}</td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
               </div>
@@ -215,8 +199,7 @@ const Index = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {recentViews.map((view, index) => (
-                      <tr key={index} className="border-b border-slate-700/50 hover:bg-slate-700/30">
+                    {recentViews.map((view, index) => <tr key={index} className="border-b border-slate-700/50 hover:bg-slate-700/30">
                         <td className="p-4 text-gray-400">{view.id}</td>
                         <td className="p-4 font-mono text-blue-400">{view.username}</td>
                         <td className="p-4">
@@ -225,8 +208,7 @@ const Index = () => {
                           </span>
                         </td>
                         <td className="p-4 text-gray-400 text-sm">{view.time}</td>
-                      </tr>
-                    ))}
+                      </tr>)}
                   </tbody>
                 </table>
               </div>
@@ -238,7 +220,7 @@ const Index = () => {
       {/* FAQs Section */}
       <section id="faqs" className="py-20 px-4 bg-slate-800/30">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mx-0 py-[10px]">
             Perguntas recentes
           </h2>
           
@@ -281,8 +263,6 @@ const Index = () => {
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
