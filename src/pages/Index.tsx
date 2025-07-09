@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Users, Eye, DollarSign, Check, ExternalLink, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,7 +6,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 
 const Index = () => {
   const [username, setUsername] = useState('');
-  const [captcha, setCaptcha] = useState('');
   const [recentPayments, setRecentPayments] = useState([]);
   const [recentViews, setRecentViews] = useState([]);
 
@@ -80,12 +78,10 @@ const Index = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 className="bg-slate-700/50 border-purple-600/30 text-white placeholder-gray-400"
               />
-              <Input 
-                placeholder="Digite o captcha"
-                value={captcha}
-                onChange={(e) => setCaptcha(e.target.value)}
-                className="bg-slate-700/50 border-purple-600/30 text-white placeholder-gray-400"
-              />
+              {/* Espaço reservado para HCaptcha */}
+              <div className="h-20 bg-slate-700/30 border border-purple-600/30 rounded-md flex items-center justify-center">
+                <span className="text-gray-500 text-sm">HCaptcha será inserido aqui</span>
+              </div>
               <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3">
                 Login Now
               </Button>
